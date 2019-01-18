@@ -31,6 +31,8 @@ This document explain how to create instance  Linux server on [Amazon Lightsail]
        - run `nano /etc/ssh/sshd_config`
        - find line _port 22_
        - change 22  to 2200
+       - find line _PermitRootLogin_
+       - change option to _no_, to deny connect as root remotely
        - restart ssh service `sudo service ssh restart`
    2. close terminal, (After changing the port you will not be able to connect to the server via the browser)
       
@@ -96,6 +98,7 @@ we need to configure firewall to close all port that is no need to secure our se
  ```
  $ sudo ufw default deny incoming
  $ sudo ufw default allow outgoing
+ $ sudo ufw deny 22
  $ sudo ufw allow 2200/tcp
  $ sudo ufw allow 80/tcp
  $ sudo ufw allow 123/tcp
